@@ -1,0 +1,17 @@
+
+* {
+	background:			#011826;
+	background-alt:			#011826;
+	foreground:			#EEEEEE;
+	selected:			#c49ac7;
+	urgent:				#635373;
+	on:				#496886;
+	off:				#A36584;
+	al: 				#00000000;
+	bg: 				#000000ff;
+	fg: 				#FFFFFFff;
+	se: 				#101010ff;
+	quicklink-se:			#B6E284;
+	quicklink-brdr:			#F4EA8F;
+	accent:				#F4EA8F;
+}

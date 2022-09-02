@@ -1,16 +1,19 @@
 #! /bin/sh
 
+bspc rule -r "*"
+
 # Startups
-bash $HOME/.config/bspwm/bin/bspbar.sh &
+$HOME/.config/bspwm/polybar/launch.sh &
 bash $HOME/.config/bspwm/bin/bspcomp.sh &
 xsetroot -cursor_name left_ptr &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-hsetroot -cover /usr/share/backgrounds/at_the_coffeshop.png &
 dunst -config ~/.config/bspwm/dunstrc &
 pgrep -x sxhkd > /dev/null || sxhkd -c ~/.config/bspwm/sxhkdrc &
+killall mpd &
+nitrogen --restore &
 
 # focus with pointer
-bspc config focus_follows_pointer false
+bspc config focus_follows_pointer true
 
 
 # border colors basic
@@ -18,16 +21,22 @@ bspc config focused_border_color '#a2b1e7'
 bspc config normal_border_color '#454875'
 
 
-bspc monitor -d 1 2 3 4 5 6
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 # window gap and width
-bspc config border_width         3
+bspc config border_width 2
+bspc config top_padding 32
+bspc config bottom_padding 0
+bspc config left_padding 0
+bspc config right_padding 0
+bspc config border_width 2
 bspc config window_gap          14
 
 # Defaults
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
-
-bspc rule -a code desktop='^2' state=floating follow=on
-bspc rule -a firefox desktop='^2'
-bspc rule -a Screenkey manage=off
+bspc config focus_follows_pointer true
+bspc config pointer_modifier 	 shift
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner

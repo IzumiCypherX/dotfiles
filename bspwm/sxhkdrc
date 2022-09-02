@@ -25,23 +25,17 @@ ctrl + alt + {v,r,h}
 super + x
 	bash ~/.config/bspwm/rofi/bin/powermenu
 
+super + ctrl + m
+	bash ~/.config/bspwm/rofi/bin/mpd
+
 
 super + n
-	~/.config/bspwm/rofi/bin/network
+	python ~/.config/bspwm/rofi/bin/network_menu
+
 
 # MPD Control
 ctrl + alt + m
     alacritty --config-file ~/.config/bspwm/apps/alacritty/alacritty.yml -e ncmpcpp -c ~/.ncmpcpp/config
-
-ctrl + alt + n
-    mpc next
-
-ctrl + alt + p
-    mpc prev
-
-ctrl + alt + x
-    mpc toggle
-
 
 #
 # bspwm hotkeys
@@ -53,7 +47,7 @@ super + shift + {e,c}
 
 # close and kill
 super + q
-	bspc node -{c,k}
+	bspc node -c
 
 # alternate between the tiled and monocle layout
 super + m
@@ -72,17 +66,8 @@ super + g
 #
 
 # set the window state
-super + {z,shift + z,x,c}
+super + {z,shift + z,shift + f,c}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-# set the node flags
-super + ctrl + {m,y}
-	bspc node -g {marked,sticky}
-
-
-# focus/swap
-#
-
 
 
 super + {_,shift + }{Left,Down,Up,Right}
@@ -120,97 +105,60 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
-#
-# preselect
-#
 
-# preselect the direction
-super + ctrl + {a,s,w,d}
-	bspc node -p {west,south,north,east}
-
-# preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-
-# cancel the preselection for the focused node
-super + ctrl + space
-	bspc node -p cancel
-
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
-#
-# move/resize
-#
 
 # expand a window by moving one of its side outward
-# super + alt + {a,s,w,d}
-#	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+super + alt + {a,s,w,d}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
-# super + alt + shift + {a,s,w,d}
-#	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+super + alt + shift + {a,s,w,d}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 
-# move a floating window
-super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-
-# start firefox
-super + {b}
-	firefox &
-
-
-# volumectl
+# Volume control
 XF86Audio{RaiseVolume,LowerVolume}
-	pactl set-sink-volume @DEFAULT_SINK@ {+10%,-10%}
+	pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
 
-XF86AudioMute
-	amixer set Master toggle
+	
 
-super + F8
-	mpc volume +5
+# Music control
+XF86AudioNext
+	playerctl next
 
-super + F7
-	mpc volume -5
+XF86AudioPrev
+	playerctl previous
 
-ctrl + XF86AudioMute
-	mpc volume 0
+XF86AudioPlay
+	playerctl play-pause
 
-# brightnessctl
+
+
+# Brightness control
 XF86MonBrightnessUp
-	brightnessctl set 5%+ -q
+	brightnessctl set 2%+ -q
 
 XF86MonBrightnessDown
-	brightnessctl set 5%- -q
+	brightnessctl set 2%- -q
 
-# screenshot menu
+
+
+# Screenshot Zone
 Print
-	xfce4-screenshooter -sf "$HOME"/Pictures
+	xfce4-screenshooter -sf "$HOME"/Pictures/Screenshots
 
-# Music ctl
-F1 
-	notify-send test
+shift + Print
+	xfce4-screenshooter -sr "$HOME"/Pictures/Screenshots
+
 
 
 # kill using mouse (aka) xkill
 super + shift + q
 	xkill
 
-## MISCELLANEOUS 
+
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
-
-## Stuff that I added later
-super + shift + {t, f}
-    bspc node -t {tiled, floating}
-
-super + shift + f : {a,s,w,d}
-    ~/.config/bspwm/bin/bspwm-resize.sh expand {west,south,north,east} 50
-
-super + alt + e : {a,s,w,d}
-    ~/.config/bspwm/bin/bspwm-resize contract {west,south,north,east} 50

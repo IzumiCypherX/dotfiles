@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+dir="$HOME/.config/bspwm/rofi/themes"
+rofi_command="rofi -theme $dir/mpd.rasi"
+
+# Links
+mpd_on=""
+mpd_off=""
+
+# Variable passed to rofi
+options="$mpd_on\n$mpd_off"
+
+chosen="$(echo -e "$options" | $rofi_command -p "Toggle MPD" -dmenu -selected-row 0)"
+case $chosen in
+    $mpd_on)
+        mpd & mpDris2 &
+        ;;
+    $mpd_off)
+        killall mpd & killall mpDris2 &
+        ;;
+esac
+

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+DIR="$HOME/.config/berry"
+
+rofi_command="rofi -theme $DIR/rofi/themes/asroot.rasi"
+
+# Apps
+terminal=" Alacritty"
+files=" File Manager"
+clifm=" Ranger"
+vim=" Vim"
+
+# Variable passed to rofi
+options="$terminal\n$files\n$clifm\n$vim"
+
+# Functions
+
+chosen="$(echo -e "$options" | $rofi_command -p "Run as root" -dmenu -selected-row 0)"
+case $chosen in
+    $terminal)
+        "$DIR"/bin/asroot.sh 'alacritty --class alacritty-float,alacritty-float --config-file /home/sidhartha/.config/alacritty/alacritty.yml'
+        ;;
+    $files)
+        "$DIR"/bin/asroot.sh 'thunar'
+        ;;
+    $clifm)
+        "$DIR"/bin/asroot.sh 'alacritty --class alacritty-float,alacritty-float --config-file /home/sidhartha/.config/alacritty/alacritty.yml -e ranger'
+        ;;
+    $vim)
+        "$DIR"/bin/asroot.sh 'alacritty --class alacritty-float,alacritty-float --config-file /home/sidhartha/.config/alacritty/alacritty.yml -e vim'
+        ;;
+esac

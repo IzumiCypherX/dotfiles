@@ -19,7 +19,7 @@ super + {f,w,e}
 
 # terminal apps
 ctrl + alt + {v,r,h}
-	alacritty --config-file ~/.config/bspwm/alacritty/alacritty.yml -e {vim,ranger,htop}
+	alacritty --config-file ~/.config/bspwm/apps/alacritty/alacritty.yml -e {vim,ranger,htop}
 
 # rofi scripts
 super + x

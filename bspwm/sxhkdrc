@@ -121,6 +121,8 @@ super + alt + shift + {a,s,w,d}
 XF86Audio{RaiseVolume,LowerVolume}
 	pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
 
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 	
 
 # Music control
@@ -131,9 +133,7 @@ XF86AudioPrev
 	playerctl previous
 
 XF86AudioPlay
-	playerctl play-pause
-
-
+	playerctl -a play-pause
 
 # Brightness control
 XF86MonBrightnessUp

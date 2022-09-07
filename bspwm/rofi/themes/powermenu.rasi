@@ -17,9 +17,10 @@ window {
     text-color:                     @foreground;
     border:                  		1px;
     border-color:                  	@selected;
-    border-radius:                  14px;
-    width:                          100px;
-    x-offset:                       -20;
+    border-radius:                  0px;
+    width:                          328px;
+    location:			    center;
+    x-offset:                       0;
     y-offset:                       0;
 }
 
@@ -37,7 +38,7 @@ prompt {
 textbox-prompt-colon {
 	expand: 						false;
 	str: 							"";
-    border-radius:                  8px;
+    border-radius:                  0px;
     background-color:               @highlight;
     text-color:                     @background;
     padding:    					6px 10px 6px 10px;
@@ -52,7 +53,7 @@ entry {
     expand:                         true;
     horizontal-align:               0;
     blink:                          false;
-    padding:                        6px;
+    padding:                        10px;
 }
 
 inputbar {
@@ -79,11 +80,11 @@ case-indicator {
 listview {
     background-color:               @background;
     columns:                        1;
-    lines:							5;
+    lines:			    5;
     spacing:                        10px;
     cycle:                          true;
     dynamic:                        true;
-    layout:                         vertical;
+    layout:                         horizontal;
 }
 
 mainbox {
@@ -97,7 +98,7 @@ element {
     background-color:               @background-alt;
     text-color:                     @foreground;
     orientation:                    horizontal;
-    border-radius:                  100%;
+    border-radius:                  0%;
     padding:                        14px;
 }
 
@@ -106,7 +107,7 @@ element-icon {
     text-color:       				inherit;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
-    size:                           0px;
+    size:                           10px;
     border:                         0px;
 }
 
@@ -124,7 +125,7 @@ element selected {
     background-color:               @selected;
     text-color:                     @background;
     border:                  		0px;
-    border-radius:                  100%;
+    border-radius:                  0%;
     border-color:                  	@selected;
 }
 
@@ -133,7 +134,7 @@ element.selected.urgent {
   background-color: @on;
   text-color: @background;
   border-color: @on;
-  border-radius: 100%;
+  border-radius: 0%;
 }
 
 element.selected.urgent {
@@ -145,7 +146,7 @@ element.selected.active {
   background-color: @off;
   text-color: @background;
   border-color: @off;
-  border-radius: 100%;
+  border-radius: 0%;
 }
 
 element.selected.active {

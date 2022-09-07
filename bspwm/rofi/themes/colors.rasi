@@ -1,15 +1,15 @@
 
 * {
-	background:			#011826;
-	background-alt:			#011826;
-	foreground:			#EEEEEE;
-	selected:			#c49ac7;
+	background:			#2E3440;
+	background-alt:			#2E3440;
+	foreground:			#EBCE8B;
+	selected:			#81A1C1;
 	urgent:				#635373;
 	on:				#496886;
 	off:				#A36584;
 	al: 				#00000000;
-	bg: 				#000000ff;
-	fg: 				#FFFFFFff;
+	bg: 				#BF616A;
+	fg: 				#F4EA8F;
 	se: 				#101010ff;
 	quicklink-se:			#B6E284;
 	quicklink-brdr:			#F4EA8F;
